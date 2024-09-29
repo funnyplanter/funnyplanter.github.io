@@ -72,11 +72,12 @@ async function help() {
 async function init() {
     let p_pyodide = load_pyodide();
 
+    const base = 'https://raw.githubusercontent.com/funnyplanter/CuNNy/master/';
     let files = await Promise.all([
-        fetch_file('magpie.py'),
-        fetch_file('mpv.py'),
-        fetch_file('common.py')]);
-    let gen = await fetch_file('gen.py');
+        fetch_file('magpie.py', base + '/magpie.py'),
+        fetch_file('mpv.py', base + '/mpv.py'),
+        fetch_file('common.py', base + '/common.py')]);
+    let gen = await fetch_file(base + '/gen.py');
 
     load_models();
 
