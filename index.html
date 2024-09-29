@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+        <style type="text/css">
+            body {
+                margin: 1em auto;
+                max-width: 60em;
+                padding: 0.62em 3.24em;
+                font: 1.2em/1.62 sans-serif;
+            }
+            h1, h2, h3 {
+                line-height: 1.2;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>CuNNy local web generator</h2>
+        <select id="models" size="10" multiple></select>
+        <select id="backend" size="4" disabled>
+            <option value=""></option>
+            <option value="mpv">mpv</option>
+            <option value="magpie">Magpie</option>
+        </select>
+        <textarea id="args" rows="1" disabled></textarea>
+        <button id="run" disabled>run</button>
+        <div style="width: 100%;overflow:auto;">
+            <div style="float:left; width: 50%;overflow: auto;">
+                <p id="help" style="white-space: pre-wrap;"></p>
+            </div>
+            <div style="overflow: auto;">
+                <p id="error" style="white-space: pre-wrap;color: red;"></p>
+            </div>
+        </div>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+</html>
