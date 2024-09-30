@@ -1,7 +1,9 @@
 <!doctype html>
 <html>
     <head>
-        <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+        <title>CuNNy local web generator</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style type="text/css">
             body {
                 margin: 1em auto;
@@ -13,19 +15,25 @@
                 line-height: 1.2;
             }
         </style>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
     </head>
     <body>
+        <div style="float: right">
+            <a href="https://github.com/funnyplanter/CuNNy">source</a>
+            <a href="https://github.com/funnyplanter/funnyplanter.github.io">web</a>
+        </div>
         <h2>CuNNy local web generator</h2>
-        <select id="models" size="10" multiple></select>
-        <select id="backend" size="4" disabled>
-            <option value=""></option>
-            <option value="mpv">mpv</option>
-            <option value="magpie">Magpie</option>
-        </select>
-        <textarea id="args" rows="1" disabled></textarea>
-        <button id="run" disabled>run</button>
-        <div style="width: 100%;overflow:auto;">
-            <div style="float:left; width: 50%;overflow: auto;">
+        <div style="display: flex;align-items: center;gap: 0.2em">
+            <select id="models" size="9" multiple></select>
+            <select id="backend" size="9" disabled>
+                <option value="mpv">mpv</option>
+                <option value="magpie">Magpie</option>
+            </select>
+            <textarea id="args" rows="1" disabled></textarea>
+            <button id="run" disabled>run</button>
+        </div>
+        <div style="width: 100%;overflow: auto;">
+            <div style="float:left;width: 50%;overflow: auto;">
                 <p id="help" style="white-space: pre-wrap;"></p>
             </div>
             <div style="overflow: auto;">

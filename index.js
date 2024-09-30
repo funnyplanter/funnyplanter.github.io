@@ -35,7 +35,7 @@ async function run() {
         return;
     pyodide.globals.set('unsplit_extra', args);
     let p_models = Array.from(document.getElementById('models').selectedOptions)
-        .map(v => fetch_file(v.innerHTML, v.value))
+        .map(v => fetch_file(v.innerHTML, v.value));
     p_models.forEach(async p_model => {
         model = await p_model;
         pyodide.FS.writeFile(`./${model[0]}`, model[1]);
@@ -45,18 +45,17 @@ async function run() {
     except (Exception, AssertionError, SystemExit) as e:
         return traceback.format_exc()
 f()`)
+        pyodide.FS.unlink(`./${model[0]}`);
         if (typeof(v) === 'string') {
             error_elm.textContent = v;
             return;
-        } else {
-            let blob = new Blob([v[1]], {type: 'text/plain'});
-            let link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = v[0];
-            link.click();
-            URL.revokeObjectURL(link.href);
         }
-        pyodide.FS.unlink(`./${model[0]}`)
+        let blob = new Blob([v[1]], {type: 'text/plain'});
+        let link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = v[0];
+        link.click();
+        URL.revokeObjectURL(link.href);
     });
 }
 
